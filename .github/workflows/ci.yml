@@ -1,0 +1,41 @@
+name: CI Pipeline IDS MLOps
+
+on:
+  push:
+    branches:
+      - main
+      - master
+
+  pull_request:
+    branches:
+      - main
+      - master
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v4
+
+      - name: Installer Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Installer les dépendances
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Vérifier la structure du projet
+        run: |
+          ls
+          ls api
+          ls src
+          ls tests
+
+      - name: Lancer les tests pytest
+        run: |
+          pytest

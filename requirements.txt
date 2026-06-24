@@ -1,0 +1,15 @@
+pandas
+numpy
+scikit-learn
+matplotlib
+seaborn
+joblib
+mlflow
+fastapi
+uvicorn
+pydantic
+pytest
+requests
+evidently
+prometheus-fastapi-instrumentator
+python-multipart

@@ -1,0 +1,10 @@
+version: "3.8"
+
+services:
+  ids-api:
+    build: .
+    container_name: ids-mlops-api
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
