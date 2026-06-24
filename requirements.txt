@@ -13,3 +13,5 @@ requests
 evidently
 prometheus-fastapi-instrumentator
 python-multipart
+xgboost
+svm

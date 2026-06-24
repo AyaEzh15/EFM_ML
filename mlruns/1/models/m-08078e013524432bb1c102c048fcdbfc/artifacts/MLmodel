@@ -1,0 +1,23 @@
+artifact_path: file:C:/Users/a.ezzahaoui/Desktop/t/mlops-cyber-ids/mlruns/1/models/m-08078e013524432bb1c102c048fcdbfc/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.skops
+    predict_fn: predict
+    python_version: 3.13.14
+  sklearn:
+    code: null
+    pickled_model: model.skops
+    serialization_format: skops
+    sklearn_version: 1.9.0
+    skops_trusted_types: null
+mlflow_version: 3.14.0
+model_id: m-08078e013524432bb1c102c048fcdbfc
+model_size_bytes: 9050
+model_uuid: m-08078e013524432bb1c102c048fcdbfc
+prompts: null
+run_id: e3be2d0166194dd1991f3e9b5dbe0ce6
+utc_time_created: '2026-06-24 10:20:41.060868'
