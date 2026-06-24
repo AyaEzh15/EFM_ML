@@ -1,4 +1,4 @@
-name: CI Pipeline IDS MLOps
+name: CI Pipeline MLOps IDS
 
 on:
   push:
@@ -12,30 +12,32 @@ on:
       - master
 
 jobs:
-  test:
+  mlops-validation:
+    name: Validation du pipeline MLOps IDS
     runs-on: ubuntu-latest
 
     steps:
-      - name: Récupérer le code
+      - name: Récupération du code source
         uses: actions/checkout@v4
 
-      - name: Installer Python
+      - name: Installation de Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      - name: Installer les dépendances
+      - name: Installation des dépendances
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Vérifier la structure du projet
+      - name: Vérification de la structure du projet
         run: |
           ls
           ls api
           ls src
           ls tests
+          ls models
 
-      - name: Lancer les tests pytest
+      - name: Exécution des tests automatiques avec pytest
         run: |
-          création du backend
+          pytest
