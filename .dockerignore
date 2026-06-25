@@ -1,0 +1,42 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Git
+.git/
+.github/
+
+# MLflow
+mlruns/
+mlflow/
+mlflow.db
+
+# Models
+models/
+
+# Reports
+reports/
+
+# Notebooks
+notebooks/
+
+# Tests
+tests/
+
+# Documentation
+docs/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+docker-compose.yml
+tree.txt
