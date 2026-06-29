@@ -34,24 +34,14 @@ def predict_intrusion(input_data: dict):
     """
 
     model, scaler, columns = load_artifacts()
-
+    
     df = pd.DataFrame([input_data])
-
-    # Encodage des variables catégorielles comme pendant l'entraînement
     df = pd.get_dummies(df)
-
-    # Ajouter les colonnes manquantes
     for col in columns:
         if col not in df.columns:
             df[col] = 0
-
-    # Supprimer les colonnes inconnues et garder le même ordre
     df = df[columns]
-
-    # Normalisation
     df_scaled = scaler.transform(df)
-
-    # Prédiction
     prediction = int(model.predict(df_scaled)[0])
 
     if prediction == 0:
