@@ -1,4 +1,5 @@
 import os
+import json
 import joblib
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -24,6 +25,17 @@ def evaluate_best_model():
     print("Chargement du meilleur modèle...")
     model = joblib.load("models/best_model.pkl")
 
+    # Récupérer automatiquement le nom du meilleur modèle
+    best_model_name = "XGBoost"  # Valeur par défaut si le fichier JSON n'existe pas
+
+    info_path = "models/best_model_info.json"
+    if os.path.exists(info_path):
+        with open(info_path, "r", encoding="utf-8") as f:
+            best_model_info = json.load(f)
+            best_model_name = best_model_info.get("best_model_name", "Best Model")
+
+    print(f"Meilleur modèle détecté : {best_model_name}")
+
     print("Prédiction sur les données de test...")
     y_pred = model.predict(X_test)
 
@@ -33,7 +45,7 @@ def evaluate_best_model():
     f1 = f1_score(y_test, y_pred)
 
     print("\n==============================")
-    print("Résultats du meilleur modèle")
+    print(f"Résultats du meilleur modèle : {best_model_name}")
     print("==============================")
     print(f"Accuracy  : {accuracy:.4f}")
     print(f"Precision : {precision:.4f}")
@@ -54,7 +66,7 @@ def evaluate_best_model():
 
     # 1. Sauvegarder les métriques principales
     metrics_df = pd.DataFrame([{
-        "model": "Random Forest",
+        "model": best_model_name,
         "accuracy": accuracy,
         "precision": precision,
         "recall": recall,
@@ -85,7 +97,7 @@ def evaluate_best_model():
     )
 
     display.plot()
-    plt.title("Matrice de confusion - Random Forest")
+    plt.title(f"Matrice de confusion - {best_model_name}")
     plt.savefig("reports/figures/confusion_matrix.png", dpi=300, bbox_inches="tight")
     plt.close()
 
